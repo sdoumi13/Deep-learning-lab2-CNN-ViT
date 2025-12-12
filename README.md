@@ -71,7 +71,7 @@ transform_tl = transforms.Compose([
 # Freeze des poids pour ne ré-entraîner que la couche finale
 for param in vgg16.parameters(): param.requires_grad = False
 ```
-
+![Description de l’image](/images/3.png)
 **Analyse :** Bien que fonctionnelle, cette approche est inefficace pour MNIST car l'upscaling crée une redondance de données massive (64x plus de pixels à traiter).
 
 ---
@@ -113,7 +113,7 @@ Les temps d'entraînement montrent une disparité massive :
 - **ViT : entre les deux**
 
 **Interprétation :** Le coût computationnel du R-CNN (RPN, RoI Align, etc.) est injustifiable pour de la simple classification.
-![Description de l’image](/images/3.png)
+![Description de l’image](/images/4.png)
 
 ---
 

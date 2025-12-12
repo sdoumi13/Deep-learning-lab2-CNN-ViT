@@ -118,11 +118,5 @@ Les temps d'entraînement montrent une disparité massive :
 ---
 
 ## 🏆 Conclusion Générale
-Ce laboratoire démontre que **la complexité n'est pas toujours synonyme de performance**.
-
-- Pour des tâches simples (images centrées, faible résolution) : **le CNN est roi**.
-- Pour la détection d'objets multiples : **Faster R-CNN reste nécessaire**, malgré son coût.
-- Pour de grands datasets avec relations globales : **le ViT est l'état de l'art**, mais il est data-hungry.
-
-Ce travail a permis de valider expérimentalement les théories de coût/bénéfice des architectures modernes en Deep Learning.
+This lab allowed me to critically analyze the alignment between neural architectures and task complexity. I empirically demonstrated the superiority of the CNN for MNIST, as its inductive bias (locality and translation invariance) makes it structurally optimal for this problem. In contrast, Faster R-CNN proved to be 'overkill,' introducing prohibitive latency due to its Region Proposal Network (RPN) for a simple, centered classification task, while Transfer Learning (VGG16/AlexNet) was inefficient due to the high computational cost of upscaling (28px to 224px) for marginal gains. Most notably, implementing a Vision Transformer (ViT) from scratch revealed how Self-Attention captures global dependencies without convolutions; however, I observed that its lack of strong spatial priors makes it more 'data-hungry' and less efficient than a CNN on small datasets. Ultimately, I learned that model sophistication should never supersede architectural suitability for the specific nature of the data.
 

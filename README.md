@@ -1,8 +1,8 @@
 # Rapport de Laboratoire : Architectures Deep Learning (CNN, R-CNN, ViT)
 
 **Sujet :** Deep Learning Lab 2 - Comparaison d'architectures sur MNIST  
-**Auteur :** [Votre Nom / Groupe]  
-**Contexte :** Exploration des paradigmes de Convolution, Détection d'Objet et Mécanismes d'Attention.
+**Auteur :** DOUMI SALMA   
+**Contexte :** Exploration des paradigmes de Convolution, Détection d'Objet et Mécanismes d'Attention. !J'ai utilise Gemini pour le code pytorch, il est excellent 
 
 ---
 
@@ -11,7 +11,7 @@ L'objectif de ce laboratoire est d'analyser le comportement de différentes arch
 
 ---
 
-## 🏛️ Partie 1 : Approches Convolutionnelles & Détection
+##  Partie 1 : Approches Convolutionnelles & Détection
 
 ### 1.1 Le CNN Standard (Baseline)
 **Logique Théorique :** Le CNN (Convolutional Neural Network) est l'architecture naturelle pour le traitement d'images. Il utilise l'invariance par translation via des filtres locaux (convolutions) pour extraire des caractéristiques hiérarchiques (bords -> formes -> chiffres).
@@ -52,6 +52,8 @@ target["boxes"] = torch.as_tensor([[x_min, y_min, x_max+1, y_max+1]], dtype=torc
 **Temps :** ~778s (Env. 13 min)
 
 **Analyse :** Le modèle est 10x plus lent que le CNN. C'est une architecture "Overkill" : le réseau perd énormément de ressources à proposer des régions (RPN) pour localiser un objet qui est toujours au centre.
+![Description de l’image](/images/1.png)
+
 
 ---
 
@@ -92,6 +94,7 @@ x = x + self.pos_embed
 **Résultats :** Accuracy : ~97% - 98%
 
 **Analyse :** Le ViT performe étonnamment bien pour une implémentation "from scratch". Cependant, il est généralement moins performant que le CNN sur de petits datasets car il manque de "Biais Inductif" (il doit apprendre que les pixels voisins sont corrélés, alors que le CNN le sait par design).
+![Description de l’image](/images/2.png)
 
 ---
 
@@ -110,6 +113,7 @@ Les temps d'entraînement montrent une disparité massive :
 - **ViT : entre les deux**
 
 **Interprétation :** Le coût computationnel du R-CNN (RPN, RoI Align, etc.) est injustifiable pour de la simple classification.
+![Description de l’image](/images/3.png)
 
 ---
 
